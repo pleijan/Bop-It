@@ -23,7 +23,7 @@
         android:id="@+id/textView3"
         android:layout_width="269dp"
         android:layout_height="96dp"
-        android:text="Felicitation ton score est de :"
+        android:text="Felicitation ton temps est de :"
         android:textAlignment="center"
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -47,10 +47,10 @@
         app:layout_constraintVertical_bias="0.399" />
 
     <TextView
-        android:id="@+id/textView4"
-        android:layout_width="132dp"
-        android:layout_height="62dp"
-        android:background="@drawable/bordure"
+        android:id="@+id/timerFinal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

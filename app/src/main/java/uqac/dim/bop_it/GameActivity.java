@@ -37,7 +37,7 @@ public class GameActivity extends AppCompatActivity {
 
         //lancement timer
 
-        timer="";
+        timer="0:30";
 
 
             //if epreuve fini avant le temps impartie

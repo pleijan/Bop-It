@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -28,11 +29,12 @@ public class GameOverActivity extends AppCompatActivity {
             timer = extras.getString("timer");
             Log.i("DIM", pseudo+","+timer);
         }
+
+        ((TextView) findViewById(R.id.timerFinal)).setText(timer);
     }
 
     public void PlayAgain(View view) {
         Intent intent = new Intent(this, GameActivity.class);
-
         intent.putExtra("pseudo",pseudo);
         startActivity(intent);
     }
