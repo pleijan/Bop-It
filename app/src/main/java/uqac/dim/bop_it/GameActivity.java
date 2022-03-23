@@ -55,4 +55,9 @@ public class GameActivity extends AppCompatActivity {
         intent.putExtra("timer",timer);
         startActivity(intent);
     }
+
+    public void pauseMenu(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
 }
