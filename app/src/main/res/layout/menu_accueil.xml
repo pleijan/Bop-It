@@ -5,13 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F1F0F0"
+    android:screenOrientation="portrait"
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/Play"
         android:layout_width="299dp"
         android:layout_height="85dp"
         android:text="Jouer"
+        android:onClick="Play"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,7 +29,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.103"
-        app:srcCompat="@drawable/Logo" />
+        app:srcCompat="@drawable/logo" />
 
     <Button
         android:id="@+id/button2"
@@ -66,4 +68,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.499" />
+
+    <EditText
+        android:id="@+id/pseudo"
+        android:layout_width="243dp"
+        android:layout_height="47dp"
+        android:text="Pseudo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.625" />
 </androidx.constraintlayout.widget.ConstraintLayout>

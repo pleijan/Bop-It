@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:screenOrientation="portrait"
     android:layout_height="match_parent">
 
     <TextView
@@ -21,11 +22,16 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="380dp"
-        android:layout_height="612dp"
+        android:layout_width="370dp"
+        android:layout_height="545dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.784"
         app:srcCompat="@drawable/bordure"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="105dp" />
+        android:onClick="gameOver"/>
 
     <ImageButton
         android:id="@+id/imageButton"
