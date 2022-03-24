@@ -10,9 +10,16 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.List;
+
+import uqac.dim.bop_it.data.Score;
+import uqac.dim.bop_it.data.ScoreBD;
+
 public class GameOverActivity extends AppCompatActivity {
 
     String pseudo,timer;
+    private ScoreBD sbd;
+    private Score score;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +38,16 @@ public class GameOverActivity extends AppCompatActivity {
         }
 
         ((TextView) findViewById(R.id.timerFinal)).setText(timer);
+
+        sbd = ScoreBD.getDatabase(getApplicationContext());
+
+
+
+        List<Score> scores = sbd.scoreDao().getAllScore();
+
+        sbd.scoreDao().addScore(new Score(pseudo,timer));
+
+        Log.i("DIM",scores.toString());
     }
 
     public void PlayAgain(View view) {
