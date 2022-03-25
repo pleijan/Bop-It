@@ -11,7 +11,7 @@
         android:layout_width="113dp"
         android:layout_height="35dp"
         android:background="@drawable/bordure"
-        android:text="Timer"
+        android:text="3:00"
         android:textAlignment="center"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
