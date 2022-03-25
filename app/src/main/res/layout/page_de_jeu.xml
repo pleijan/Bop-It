@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/tempsRestant"
         android:layout_width="113dp"
         android:layout_height="35dp"
         android:background="@drawable/bordure"
@@ -34,7 +34,7 @@
         android:onClick="gameOver"/>
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/retourMenuJeu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
