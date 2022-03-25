@@ -27,4 +27,9 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("pseudo",((EditText)findViewById(R.id.pseudo)).getText().toString());
         startActivity(intent);
     }
+
+    public void Leaderboard(View view){
+        Intent intent = new Intent(this, LeaderboardActivity.class);
+        startActivity(intent);
+    }
 }

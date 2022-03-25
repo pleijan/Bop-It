@@ -32,10 +32,11 @@
         app:srcCompat="@drawable/logo" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/Leaderboard"
         android:layout_width="144dp"
         android:layout_height="44dp"
         android:text="Leaderboard"
+        android:onClick="Leaderboard"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"

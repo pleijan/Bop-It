@@ -40,10 +40,11 @@ public class GameActivity extends AppCompatActivity {
         timer="0:30";
 
 
-            //if epreuve fini avant le temps impartie
-            //autre epreuve
+            // while il reste du temps
+            // choisi une epreuve au hasard
             //
-            //sinon fin du jeu
+            // si reussi calcul nouveau timer avec le nombre d'epreuve reussi et restart timer
+            // sinon fin du jeu (gameOver(view View))
 
 
 

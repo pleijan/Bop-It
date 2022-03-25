@@ -1,6 +1,7 @@
 package uqac.dim.bop_it.data;
 
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
@@ -18,4 +19,7 @@ public interface ScoreDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void addScore(Score score);
+
+    @Query ("delete from score")
+    void deleteAllScore();
 }

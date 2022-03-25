@@ -1,7 +1,9 @@
 package uqac.dim.bop_it;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.view.Window;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,12 +16,11 @@ import uqac.dim.bop_it.data.ScoreBD;
 public class LeaderboardActivity extends AppCompatActivity {
 
     private ScoreBD sbd;
-    private Score score;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.leaderboard);
+        setContentView(R.layout.fragment_main);
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
@@ -33,5 +34,12 @@ public class LeaderboardActivity extends AppCompatActivity {
 
     }
 
+    public void deleteScore(View view){
+        sbd.scoreDao().deleteAllScore();
+    }
 
+    public void backMenu(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
 }

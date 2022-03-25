@@ -19,7 +19,6 @@ public class GameOverActivity extends AppCompatActivity {
 
     String pseudo,timer;
     private ScoreBD sbd;
-    private Score score;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
