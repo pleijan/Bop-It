@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/tempsRestant"
+        android:id="@+id/countdowm_timer"
         android:layout_width="113dp"
         android:layout_height="35dp"
         android:background="@drawable/bordure"

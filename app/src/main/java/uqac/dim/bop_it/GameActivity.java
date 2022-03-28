@@ -2,14 +2,20 @@ package uqac.dim.bop_it;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class GameActivity extends AppCompatActivity {
+    private TextView CountDownText;
+    private long timeLeftInMilliseconds = 300000; // Time in milliseconds
+    private boolean countdownIsActive;
+    private int nombreDepreuveReussi  = 0;
 
     String pseudo,timer;
 
@@ -28,25 +34,19 @@ public class GameActivity extends AppCompatActivity {
             pseudo = extras.getString("pseudo");
             Log.i("DIM", pseudo);
         }
-
-
         startGame();
     }
 
     private void startGame() {
+        CountDownText = findViewById(R.id.countdowm_timer);
+        startTimer();
+
 
         //lancement timer
-
-        timer="0:30";
-
-
             //if epreuve fini avant le temps impartie
             //autre epreuve
             //
             //sinon fin du jeu
-
-
-
     }
 
     public void gameOver(View view) {
@@ -60,4 +60,32 @@ public class GameActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
+
+    public void startTimer() {
+        new CountDownTimer(timeLeftInMilliseconds, 1000) {
+            @Override
+            public void onTick(long i) {
+                timeLeftInMilliseconds = i;
+                updateTimer();
+            }
+            @Override
+            public void onFinish() {
+
+            }
+        }.start();
+    }
+    public void updateTimer(){
+        int minutes = (int) timeLeftInMilliseconds / 60000;
+        int seconds = (int) timeLeftInMilliseconds % 60000/1000;
+
+        String timeLeftInText;
+
+        timeLeftInText = "" + minutes;
+        timeLeftInText = timeLeftInText + ":";
+
+        if (seconds < 10 ) timeLeftInText = timeLeftInText + "0";
+        timeLeftInText = timeLeftInText = timeLeftInText + seconds;
+
+        CountDownText.setText(timeLeftInText);
+    };
 }
