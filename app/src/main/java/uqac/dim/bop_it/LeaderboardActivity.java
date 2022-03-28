@@ -20,7 +20,7 @@ public class LeaderboardActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.fragment_main);
+        setContentView(R.layout.leaderboard);
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
