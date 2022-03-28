@@ -1,5 +1,6 @@
 package uqac.dim.bop_it;
 
+import android.app.Notification;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import android.hardware.SensorEvent; // besoin pour détecter les changement des sensors
 import android.hardware.SensorEventListener;
 
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Random;
@@ -18,16 +20,17 @@ import java.util.Random;
 public class GameActivity extends AppCompatActivity {
     private TextView CountDownText;
     private long timeLeftInMilliseconds = 300000; // Time in milliseconds
-    private boolean countdownIsActive;
-    private int nombreDepreuveReussi  = 0;
+    private boolean timerIsRunning ;
+    private TextView actionRequiredText;
+    private int actionSucceed  = 0;
+
     private enum ActionRequired {
         BOPIT,
         NONE
     }
+
+
     private ActionRequired actionRequired = ActionRequired.NONE;
-
-
-    //TODO add onclick listerner
 
     String pseudo,timer;
 
@@ -52,7 +55,13 @@ public class GameActivity extends AppCompatActivity {
         final Button button = (Button) findViewById(R.id.BopITButton);
         button.setOnClickListener(new View.OnClickListener() {
                                       public void onClick(View v) {
-                                          // your handler code here
+                                          if (actionRequired == ActionRequired.BOPIT ){
+                                              actionSucceed++;
+                                              askAndLaunchRandomActions();
+                                          }
+                                          else {
+                                              gameOver(v);
+                                          }
                                       }
                                   });
         startGame();
@@ -60,18 +69,11 @@ public class GameActivity extends AppCompatActivity {
 
     private void startGame() {
         CountDownText = findViewById(R.id.countdowm_timer);
+        actionRequiredText = findViewById(R.id.AskedAction);
+        timerIsRunning = true;
         startTimer();
 
-       // while(timeLeftInMilliseconds > 0) {
-            //askAndLaunchRandomActions();
-       // }
-
-
-        //lancement timer
-            //if epreuve fini avant le temps impartie
-            //autre epreuve
-            //
-            //sinon fin du jeu
+       askAndLaunchRandomActions(); // les actions utilisateur déterminerons si on relance une actiondemandé
     }
 
     public void gameOver(View view) {
@@ -115,20 +117,38 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void askAndLaunchRandomActions(){
-        final int random = new Random().nextInt(1) + 1;
+        final int random = new Random().nextInt(2) + 1; // from 1 to 1 (random 1 = 0)
        //selon le random généré, choisi une fonction
         switch(random) {
             case 1:
-                //bop-it
+                bopItAction();//demande de pousser le bouton
+                break;
+            case 2:
+                bopItActionMaisPourTest();
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            case 5:
+                break;
+            case 6:
                 break;
             default: // bop-it
                 break;
                 // code block
+
+
         }
     }
 
     public void bopItAction(){
-
+        actionRequiredText.setText("Bop-IT!");
+        actionRequired = ActionRequired.BOPIT; //TODO mis a none a des din de test, doit etre remis a BOPIT apres, note au cas
+    }
+    public void bopItActionMaisPourTest(){
+        actionRequiredText.setText("Fait rien");
+        actionRequired = ActionRequired.NONE; //TODO mis a none a des din de test, doit etre remis a BOPIT apres, note au cas
     }
 
 }
