@@ -6,16 +6,18 @@ import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.Random;
 
 public class GameActivity extends AppCompatActivity {
     private TextView CountDownText;
     private long timeLeftInMilliseconds = 300000; // Time in milliseconds
     private boolean countdownIsActive;
     private int nombreDepreuveReussi  = 0;
+
 
     String pseudo,timer;
 
@@ -40,6 +42,10 @@ public class GameActivity extends AppCompatActivity {
     private void startGame() {
         CountDownText = findViewById(R.id.countdowm_timer);
         startTimer();
+
+       // while(timeLeftInMilliseconds > 0) {
+            //askAndLaunchRandomActions();
+       // }
 
 
         //lancement timer
@@ -84,8 +90,26 @@ public class GameActivity extends AppCompatActivity {
         timeLeftInText = timeLeftInText + ":";
 
         if (seconds < 10 ) timeLeftInText = timeLeftInText + "0";
-        timeLeftInText = timeLeftInText = timeLeftInText + seconds;
+        timeLeftInText = timeLeftInText + seconds;
 
         CountDownText.setText(timeLeftInText);
-    };
+    }
+
+    public void askAndLaunchRandomActions(){
+        final int random = new Random().nextInt(1) + 1;
+       //selon le random généré, choisi une fonction
+        switch(random) {
+            case 1:
+                //bop-it
+                break;
+            default: // bop-it
+                break;
+                // code block
+        }
+    }
+
+    public void bopItAction(){
+
+    }
+
 }
