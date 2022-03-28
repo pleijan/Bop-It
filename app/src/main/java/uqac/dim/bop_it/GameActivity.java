@@ -6,6 +6,7 @@ import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.TextView;
 import android.hardware.SensorEvent; // besoin pour détecter les changement des sensors
 import android.hardware.SensorEventListener;
@@ -19,6 +20,13 @@ public class GameActivity extends AppCompatActivity {
     private long timeLeftInMilliseconds = 300000; // Time in milliseconds
     private boolean countdownIsActive;
     private int nombreDepreuveReussi  = 0;
+    private enum ActionRequired {
+        BOPIT,
+        NONE
+    }
+    private ActionRequired actionRequired = ActionRequired.NONE;
+
+
     //TODO add onclick listerner
 
     String pseudo,timer;
@@ -38,6 +46,15 @@ public class GameActivity extends AppCompatActivity {
             pseudo = extras.getString("pseudo");
             Log.i("DIM", pseudo);
         }
+
+        //Ajout de l'action sur le bouton pour le jeu
+
+        final Button button = (Button) findViewById(R.id.BopITButton);
+        button.setOnClickListener(new View.OnClickListener() {
+                                      public void onClick(View v) {
+                                          // your handler code here
+                                      }
+                                  });
         startGame();
     }
 
@@ -111,7 +128,7 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void bopItAction(){
-        
+
     }
 
 }
