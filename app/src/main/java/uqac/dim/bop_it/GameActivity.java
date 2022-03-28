@@ -7,6 +7,8 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.TextView;
+import android.hardware.SensorEvent; // besoin pour détecter les changement des sensors
+import android.hardware.SensorEventListener;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,7 +19,7 @@ public class GameActivity extends AppCompatActivity {
     private long timeLeftInMilliseconds = 300000; // Time in milliseconds
     private boolean countdownIsActive;
     private int nombreDepreuveReussi  = 0;
-
+    //TODO add onclick listerner
 
     String pseudo,timer;
 
@@ -109,7 +111,7 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void bopItAction(){
-
+        
     }
 
 }

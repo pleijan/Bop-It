@@ -6,6 +6,7 @@
     android:screenOrientation="portrait"
     android:layout_height="match_parent">
 
+
     <TextView
         android:id="@+id/countdowm_timer"
         android:layout_width="113dp"
@@ -18,20 +19,35 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.08" />
+        app:layout_constraintVertical_bias="0.022" />
+
+    <TextView
+        android:id="@+id/AskedAction"
+        android:layout_width="370dp"
+        android:layout_height="50dp"
+        android:background="@drawable/bordure"
+        android:text="Bop-It!"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/countdowm_timer"
+        app:layout_constraintVertical_bias="0.566" />
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="370dp"
-        android:layout_height="545dp"
+        android:layout_height="580dp"
+        android:onClick="gameOver"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/countdowm_timer"
         app:layout_constraintVertical_bias="0.784"
-        app:srcCompat="@drawable/bordure"
-        android:onClick="gameOver"/>
+        app:srcCompat="@drawable/bordure" />
 
     <ImageButton
         android:id="@+id/retourMenuJeu"
