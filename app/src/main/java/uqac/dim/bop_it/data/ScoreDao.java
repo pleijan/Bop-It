@@ -11,7 +11,7 @@ import java.util.List;
 @Dao
 public interface ScoreDao {
 
-    @Query("SELECT * FROM score")
+    @Query("SELECT * FROM score ORDER BY temps DESC")
     List<Score> getAllScore();
 
     @Insert

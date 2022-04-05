@@ -8,7 +8,11 @@ import android.view.View;
 import android.view.Window;
 import android.widget.EditText;
 
+import uqac.dim.bop_it.data.ScoreBD;
+
 public class MainActivity extends AppCompatActivity {
+
+    private ScoreBD sbd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,8 +22,9 @@ public class MainActivity extends AppCompatActivity {
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
-    }
 
+
+    }
 
 
     public void Play(View view) {

@@ -6,16 +6,24 @@
     tools:ignore="ExtraText">
 
     <LinearLayout
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="20dip">
 
         <TextView
             android:id="@+id/fragment_main_item_title"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:textAlignment="textStart" />
+
+        <TextView
+            android:id="@+id/fragment_main_item_subtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAlignment="textEnd" />
 
     </LinearLayout>
 

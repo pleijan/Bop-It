@@ -11,7 +11,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class GameActivity extends AppCompatActivity {
 
-    String pseudo,timer;
+    String pseudo;
+    int timer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +38,7 @@ public class GameActivity extends AppCompatActivity {
 
         //lancement timer
 
-        timer="0:30";
+        timer=232;
 
 
             // while il reste du temps

@@ -1,5 +1,6 @@
 package uqac.dim.bop_it;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,7 +18,8 @@ import uqac.dim.bop_it.data.ScoreBD;
 
 public class GameOverActivity extends AppCompatActivity {
 
-    String pseudo,timer;
+    String pseudo;
+    int timer;
     private ScoreBD sbd;
 
     @Override
@@ -32,16 +34,13 @@ public class GameOverActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             pseudo = extras.getString("pseudo");
-            timer = extras.getString("timer");
+            timer = extras.getInt("timer");
             Log.i("DIM", pseudo+","+timer);
         }
 
-        ((TextView) findViewById(R.id.timerFinal)).setText(timer);
+        ((TextView) findViewById(R.id.timerFinal)).setText(String.valueOf(timer));
 
         sbd = ScoreBD.getDatabase(getApplicationContext());
-
-
-
         List<Score> scores = sbd.scoreDao().getAllScore();
 
         sbd.scoreDao().addScore(new Score(pseudo,timer));
