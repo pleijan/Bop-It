@@ -3,17 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/pierr/StudioProjects/Bop-It/app/src/main/res/layout/fin_de_partie.xml" value="0.2015625" />
-        <entry key="..\:/Users/pierr/StudioProjects/Bop-It/app/src/main/res/layout/fragment_main.xml" value="0.1" />
-        <entry key="..\:/Users/pierr/StudioProjects/Bop-It/app/src/main/res/layout/leaderboard.xml" value="0.2015625" />
-        <entry key="..\:/Users/pierr/StudioProjects/Bop-It/app/src/main/res/layout/menu_accueil.xml" value="0.2015625" />
-        <entry key="..\:/Users/pierr/StudioProjects/Bop-It/app/src/main/res/layout/page_de_jeu.xml" value="0.2015625" />
-        <entry key="..\:/Users/pierr/StudioProjects/Bop-It/app/src/main/res/layout/score_item.xml" value="0.1" />
         <entry key="..\:/travail/UQAC/BopIt/app/src/main/res/drawable/bordure.xml" value="0.1995" />
         <entry key="..\:/travail/UQAC/BopIt/app/src/main/res/layout/activity_main.xml" value="0.371875" />
         <entry key="..\:/travail/UQAC/BopIt/app/src/main/res/layout/fin_de_partie.xml" value="0.19166666666666668" />
+        <entry key="..\:/travail/UQAC/BopIt/app/src/main/res/layout/leaderboard.xml" value="0.1953125" />
         <entry key="..\:/travail/UQAC/BopIt/app/src/main/res/layout/menu_accueil.xml" value="0.22" />
         <entry key="..\:/travail/UQAC/BopIt/app/src/main/res/layout/page_de_jeu.xml" value="0.22" />
+        <entry key="..\:/travail/UQAC/BopIt/app/src/main/res/layout/score_item.xml" value="0.19166666666666668" />
       </map>
     </option>
   </component>
