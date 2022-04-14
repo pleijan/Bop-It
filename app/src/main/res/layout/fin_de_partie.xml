@@ -71,16 +71,30 @@
         app:layout_constraintVertical_bias="0.925"
         android:onClick="PlayAgain"/>
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragment"
-        android:name="uqac.dim.bop_it.recyclerView.MainFragment"
-        android:layout_width="304dp"
-        android:layout_height="245dp"
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.711" />
+        app:layout_constraintVertical_bias="0.67">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <GridLayout
+                android:id="@+id/grille_score"
+                android:layout_width="wrap_content"
+                android:layout_height="200dp"
+                android:columnCount="2">
+
+
+            </GridLayout>
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
