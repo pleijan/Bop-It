@@ -32,7 +32,8 @@ public class GameActivity extends AppCompatActivity {
 
     private ActionRequired actionRequired = ActionRequired.NONE;
 
-    String pseudo,timer;
+    String pseudo;
+    int timer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,8 +73,12 @@ public class GameActivity extends AppCompatActivity {
         actionRequiredText = findViewById(R.id.AskedAction);
         timerIsRunning = true;
         startTimer();
+        //lancement timer
+
+        timer=232;
 
        askAndLaunchRandomActions(); // les actions utilisateur déterminerons si on relance une actiondemandé
+
     }
 
     public void gameOver(View view) {

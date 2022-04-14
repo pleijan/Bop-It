@@ -1,8 +1,11 @@
 package uqac.dim.bop_it.data;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+
+import java.util.List;
 
 @Entity
 public class Score {
@@ -14,16 +17,25 @@ public class Score {
     public String pseudo;
 
     @ColumnInfo(name = "temps")
-    public String temps;
+    public int temps;
 
-    public Score(  String pseudo, String temps){
+    public Score(  String pseudo, int temps){
 
         this.pseudo=pseudo;
         this.temps=temps;
     }
 
+    @NonNull
     @Override
     public String toString() {
         return id + " - " + pseudo + " : " + temps ;
+    }
+
+    public String getPseudo() {
+        return id+" "+pseudo;
+    }
+
+    public int getTemps() {
+        return temps;
     }
 }
