@@ -21,7 +21,7 @@
         app:layout_constraintVertical_bias="0.78" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/logoJeu"
         android:layout_width="237dp"
         android:layout_height="216dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -32,7 +32,7 @@
         app:srcCompat="@drawable/logo" />
 
     <Button
-        android:id="@+id/Leaderboard"
+        android:id="@+id/buttonLearderboard"
         android:layout_width="144dp"
         android:layout_height="44dp"
         android:text="Leaderboard"
@@ -45,7 +45,7 @@
         app:layout_constraintVertical_bias="0.89" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/buttonOption"
         android:layout_width="145dp"
         android:layout_height="45dp"
         android:text="Option"
@@ -57,7 +57,7 @@
         app:layout_constraintVertical_bias="0.955" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/Welcome"
         android:layout_width="254dp"
         android:layout_height="52dp"
         android:text="Welcome to bop it"
