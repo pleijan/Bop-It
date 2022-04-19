@@ -49,7 +49,7 @@ public class LeaderboardActivity extends AppCompatActivity {
             Score score = it.next();
 
             pseudoView.setText(score.getPseudo());
-            scoreView.setText(String.valueOf(score.getTemps()));
+            scoreView.setText(String.valueOf(score.getNbEpreuve()));
             pseudoView.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);
             scoreView.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_END);
             grille.addView(pseudoView);

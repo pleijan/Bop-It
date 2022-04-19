@@ -44,6 +44,12 @@
             android:layout_height="wrap_content"
             android:columnCount="2">
 
+            <TextView
+                android:text="Pseudo :"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="nb Defi :"/>
         </GridLayout>
 
     </ScrollView>

@@ -16,26 +16,26 @@ public class Score {
     @ColumnInfo(name = "pseudo")
     public String pseudo;
 
-    @ColumnInfo(name = "temps")
-    public int temps;
+    @ColumnInfo(name = "nbEpreuve")
+    public int nbEpreuve;
 
-    public Score(  String pseudo, int temps){
+    public Score(  String pseudo, int nbEpreuve){
 
         this.pseudo=pseudo;
-        this.temps=temps;
+        this.nbEpreuve=nbEpreuve;
     }
 
     @NonNull
     @Override
     public String toString() {
-        return id + " - " + pseudo + " : " + temps ;
+        return id + " - " + pseudo + " : " + nbEpreuve ;
     }
 
     public String getPseudo() {
         return id+" "+pseudo;
     }
 
-    public int getTemps() {
-        return temps;
+    public int getNbEpreuve() {
+        return nbEpreuve;
     }
 }
