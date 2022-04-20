@@ -32,7 +32,7 @@ public class Score {
     }
 
     public String getPseudo() {
-        return id+" "+pseudo;
+        return pseudo;
     }
 
     public int getNbEpreuve() {
