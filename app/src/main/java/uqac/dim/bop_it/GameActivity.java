@@ -1,6 +1,5 @@
 package uqac.dim.bop_it;
 
-import android.app.Notification;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -9,9 +8,6 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
-import android.hardware.SensorEvent; // besoin pour détecter les changement des sensors
-import android.hardware.SensorEventListener;
-
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -117,16 +113,18 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void askAndLaunchRandomActions(){
-        final int random = new Random().nextInt(2) + 1; // from 1 to 1 (random 1 = 0)
+         int random = new Random().nextInt(3) + 1; // from 1 to 1 (random 1 = 0)
        //selon le random généré, choisi une fonction
+        Log.d("DIM", "RANDOM: "+Integer.toString(random));
         switch(random) {
             case 1:
                 bopItAction();//demande de pousser le bouton
                 break;
             case 2:
-                bopItActionMaisPourTest();
+                SwipeAction();
                 break;
             case 3:
+                bopItActionMaisPourTest();
                 break;
             case 4:
                 break;
@@ -150,5 +148,9 @@ public class GameActivity extends AppCompatActivity {
         actionRequiredText.setText("Fait rien");
         actionRequired = ActionRequired.NONE; //TODO mis a none a des din de test, doit etre remis a BOPIT apres, note au cas
     }
-
+    public void SwipeAction(){
+        SwipeTest FSwipe = new SwipeTest();
+        getSupportFragmentManager().beginTransaction()
+                .commit();
+    }
 }
