@@ -93,6 +93,9 @@ public class GameActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     * Creation du timer et le lance
+     */
     public void startTimer() {
         new CountDownTimer(timeLeftInMilliseconds, 1000) {
             @Override
@@ -106,6 +109,10 @@ public class GameActivity extends AppCompatActivity {
             }
         }.start();
     }
+
+    /**
+     *
+     */
     public void updateTimer(){
         int minutes = (int) timeLeftInMilliseconds / 60000;
         int seconds = (int) timeLeftInMilliseconds % 60000/1000;
@@ -121,6 +128,9 @@ public class GameActivity extends AppCompatActivity {
         CountDownText.setText(timeLeftInText);
     }
 
+    /**
+     *
+     */
     public void askAndLaunchRandomActions(){
         final int random = new Random().nextInt(2) + 1; // from 1 to 1 (random 1 = 0)
        //selon le random généré, choisi une fonction
