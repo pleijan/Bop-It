@@ -3,6 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Bop-It/app/src/main/res/layout/fin_de_partie.xml" value="0.36666666666666664" />
+        <entry key="..\:/Bop-It/app/src/main/res/layout/fragment_blank_gyroscope.xml" value="0.28125" />
+        <entry key="..\:/Bop-It/app/src/main/res/layout/fragment_gyroscope.xml" value="0.36666666666666664" />
+        <entry key="..\:/Bop-It/app/src/main/res/layout/fragment_sous.xml" value="0.18854166666666666" />
+        <entry key="..\:/Bop-It/app/src/main/res/layout/gyroscope.xml" value="0.36666666666666664" />
+        <entry key="..\:/Bop-It/app/src/main/res/layout/menu_accueil.xml" value="0.36666666666666664" />
+        <entry key="..\:/Bop-It/app/src/main/res/layout/page_de_jeu.xml" value="0.36666666666666664" />
+        <entry key="..\:/Bop-It/app/src/main/res/layout/test_fragment.xml" value="0.28125" />
         <entry key="..\:/Users/pierr/StudioProjects/Bop-It/app/src/main/res/layout/fin_de_partie.xml" value="0.2015625" />
         <entry key="..\:/Users/pierr/StudioProjects/Bop-It/app/src/main/res/layout/menu_accueil.xml" value="0.2015625" />
         <entry key="..\:/Users/pierr/StudioProjects/Bop-It/app/src/main/res/layout/page_de_jeu.xml" value="0.2015625" />

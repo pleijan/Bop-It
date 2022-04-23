@@ -17,6 +17,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Random;
 
+import uqac.dim.bop_it.data.FGyroscope;
+
 public class GameActivity extends AppCompatActivity {
     private TextView CountDownText;
     private long timeLeftInMilliseconds = 300000; // Time in milliseconds
@@ -52,7 +54,7 @@ public class GameActivity extends AppCompatActivity {
 
         //Ajout de l'action sur le bouton pour le jeu
 
-        final Button button = (Button) findViewById(R.id.BopITButton);
+        /*final Button button = (Button) findViewById(R.id.BopITButton);
         button.setOnClickListener(new View.OnClickListener() {
                                       public void onClick(View v) {
                                           if (actionRequired == ActionRequired.BOPIT ){
@@ -64,7 +66,9 @@ public class GameActivity extends AppCompatActivity {
                                           }
                                       }
                                   });
-        startGame();
+
+
+        startGame(); */
     }
 
     private void startGame() {
@@ -149,6 +153,14 @@ public class GameActivity extends AppCompatActivity {
     public void bopItActionMaisPourTest(){
         actionRequiredText.setText("Fait rien");
         actionRequired = ActionRequired.NONE; //TODO mis a none a des din de test, doit etre remis a BOPIT apres, note au cas
+    }
+    public void LoadGyroscope(View view) {
+
+        FGyroscope Fragment1 = new FGyroscope();
+
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.FragmentG, FGyroscope.class,null)
+                .commit();
     }
 
 }
