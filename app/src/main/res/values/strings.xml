@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">Bop-It</string>
     <string name="inGameCountDownTimer">00:00</string>
+    <string name="retour_au_menu">Retour au menu</string>
+    <string name="felicitation_ton_score_est_de">Felicitation ton score est de :</string>
+    <string name="voici_ta_place_dans_le_classement">Voici ta place dans le classement :</string>
+    <string name="slideup">Slide up!</string>
+    <string name="slidedown">Slide down!</string>
+    <string name="slideleft">Slide left!</string>
+    <string name="slideright">Slide right!</string>
+    <string name="bopt">Bop-IT!</string>
 </resources>

@@ -14,7 +14,10 @@
         <entry key="..\:/travail/UQAC/BopIt/app/src/main/res/layout/page_de_jeu.xml" value="0.22" />
         <entry key="..\:/travail/UQAC/BopIt/app/src/main/res/layout/score_item.xml" value="0.19166666666666668" />
         <entry key="app/src/main/res/drawable/bordure.xml" value="0.16" />
-        <entry key="app/src/main/res/layout/page_de_jeu.xml" value="0.165" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.2995" />
+        <entry key="app/src/main/res/layout/fin_de_partie.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/menu_accueil.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/page_de_jeu.xml" value="0.33" />
       </map>
     </option>
   </component>

@@ -213,16 +213,16 @@ public class GameActivity extends AppCompatActivity {
         actionRequired = actionrequiredlocal;
         switch (actionrequiredlocal){
             case SWIPEUP:
-                actionRequiredText.setText("Slide up!");
+                actionRequiredText.setText(R.string.slideup);
                 break;
             case SWIPEDOWN:
-                actionRequiredText.setText("Slide down!");
+                actionRequiredText.setText(R.string.slidedown);
                 break;
             case SWIPELEFT:
-                actionRequiredText.setText("Slide left!");
+                actionRequiredText.setText(R.string.slideleft);
                 break;
             case SWIPERIGHT:
-                actionRequiredText.setText("Slide right!");
+                actionRequiredText.setText(R.string.slideright);
                 break;
             default:
                 break;
@@ -249,7 +249,7 @@ public class GameActivity extends AppCompatActivity {
         actionRequired = ActionRequired.BOPITCENTRE;
     }
     public void bopItActionHAUTGAUCHE(){
-        actionRequiredText.setText("Bop-IT!");
+        actionRequiredText.setText(R.string.bopt);
         Button bopItButtonHautGauche = (Button)findViewById(R.id.bopITButtonHautGauche);
         bopItButtonHautGauche.setVisibility(View.VISIBLE);
         bopItButtonHautGauche.setOnClickListener(new View.OnClickListener() {
@@ -263,7 +263,7 @@ public class GameActivity extends AppCompatActivity {
         actionRequired = ActionRequired.BOPITHAUTGAUCHE;
     }
     public void bopItActionHAUTDROITE(){
-        actionRequiredText.setText("Bop-IT!");
+        actionRequiredText.setText(R.string.bopt);
         Button bopItButtonHautDroite = (Button)findViewById(R.id.bopITButtonHautDroite);
         bopItButtonHautDroite.setVisibility(View.VISIBLE);
 
@@ -278,7 +278,7 @@ public class GameActivity extends AppCompatActivity {
         actionRequired=ActionRequired.BOPITHAUTDROITE;
     }
     public void bopItActionBASGAUCHE(){
-        actionRequiredText.setText("Bop-IT!");
+        actionRequiredText.setText(R.string.bopt);
         Button bopItButtonBasGauche = (Button)findViewById(R.id.bopITButtonBasGauche);
         bopItButtonBasGauche.setVisibility(View.VISIBLE);
 
@@ -293,7 +293,7 @@ public class GameActivity extends AppCompatActivity {
         actionRequired = ActionRequired.BOPITBASGAUCHE;
     }
     public void bopItActionBASDROITE(){
-        actionRequiredText.setText("Bop-IT!");
+        actionRequiredText.setText(R.string.bopt);
         Button bopItButtonBasdroite = (Button)findViewById(R.id.BopITButtonBasDroite);
         bopItButtonBasdroite.setVisibility(View.VISIBLE);
 
