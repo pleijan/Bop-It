@@ -3,7 +3,9 @@ package uqac.dim.bop_it;
 import static java.lang.Math.abs;
 
 import android.annotation.SuppressLint;
+import android.app.Notification;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
@@ -101,6 +103,7 @@ public class GameActivity extends AppCompatActivity {
 
         ImageButton relativebutton = (ImageButton) findViewById(R.id.relativebutton);
         relativebutton.setOnTouchListener((new View.OnTouchListener() {
+            View v;
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 switch (motionEvent.getAction()) {
@@ -116,16 +119,28 @@ public class GameActivity extends AppCompatActivity {
                         diffx = x2 - x1;
                         diffy = y2 - y1;
                         if (diffx < 0 & abs(diffx) > abs(diffy)) {
-                            actionRequiredText.setText("gauche");
+                            //gauche
+                            verificationDesAction(ActionRequired.SWIPELEFT,v);
+                            relativebutton.setBackgroundColor(Color.parseColor("#995050"));
+                            askAndLaunchRandomActions();
                         }
                         if (diffx > 0 & abs(diffx) > abs(diffy)) {
-                            actionRequiredText.setText("droite");
+                            //droite
+                            verificationDesAction(ActionRequired.SWIPERIGHT,v);
+                            relativebutton.setBackgroundColor(Color.parseColor("#509950"));
+                            askAndLaunchRandomActions();
                         }
                         if (diffy < 0 & abs(diffy) > abs(diffx)) {
-                            actionRequiredText.setText("haut");
+                            //haut
+                            verificationDesAction(ActionRequired.SWIPEUP,v);
+                            relativebutton.setBackgroundColor(Color.parseColor("#505090"));
+                            askAndLaunchRandomActions();
                         }
                         if (diffy > 0 & abs(diffy) > abs(diffx)) {
-                            actionRequiredText.setText("bas");
+                            //bas
+                            verificationDesAction(ActionRequired.SWIPEDOWN,v);
+                            relativebutton.setBackgroundColor(Color.parseColor("#995099"));
+                            askAndLaunchRandomActions();
                         }
                         break;
                     default:
@@ -280,7 +295,7 @@ public class GameActivity extends AppCompatActivity {
      *selection et lancement de la prochaine action du jeu
      */
     public void askAndLaunchRandomActions(){
-        int random = new Random().nextInt(5) + 1; // from 1 to 1 (random 1 = 0)
+        int random = new Random().nextInt(9) + 1; // from 1 to 1 (random 1 = 0)
        //selon le random généré, choisi une fonction
         switch(random) {
             case 1:
@@ -299,18 +314,45 @@ public class GameActivity extends AppCompatActivity {
                 bopItActionBASDROITE();
                 break;
             case 6:
+                AskForSlideAction(ActionRequired.SWIPEUP);
                 break;
             case 7:
+                AskForSlideAction(ActionRequired.SWIPEDOWN);
+
                 break;
             case 8:
+                AskForSlideAction(ActionRequired.SWIPELEFT);
+
                 break;
             case 9:
+                AskForSlideAction(ActionRequired.SWIPERIGHT);
                 break;
             default: // bop-it
                 break;
                 // code block
+        }
+    }
 
-
+    /**
+     * Set slide comme action requise
+     */
+    public void AskForSlideAction(ActionRequired actionrequiredlocal){
+        actionRequired = actionrequiredlocal;
+        switch (actionrequiredlocal){
+            case SWIPEUP:
+                actionRequiredText.setText("Slide up!");
+                break;
+            case SWIPEDOWN:
+                actionRequiredText.setText("Slide down!");
+                break;
+            case SWIPELEFT:
+                actionRequiredText.setText("Slide left!");
+                break;
+            case SWIPERIGHT:
+                actionRequiredText.setText("Slide right!");
+                break;
+            default:
+                break;
         }
     }
 
