@@ -22,18 +22,14 @@ import android.view.MotionEvent;
 
 public class GameActivity extends AppCompatActivity {
     RelativeLayout relativeLayout;
-
+    CountDownTimer mCountDownTimer;
     float x1, x2, y1, y2, diffx, diffy;
-    //SwipeListener swipelistener;
-
 
     private TextView CountDownText;
-    private long timeLeftInMilliseconds = 300000; // Time in milliseconds
+    private long timeLeftInMilliseconds = 3000; // Time in milliseconds
     private boolean timerIsRunning ;
     public TextView actionRequiredText;
     private int actionSucceed  = 0; // UTILISER POUR LE POINTAGE FINAL
-
-
     /**
      * type de lactivite lancee
      *
@@ -50,6 +46,7 @@ public class GameActivity extends AppCompatActivity {
         SWIPEDOWN,
         NONE
     }
+
 
     private ActionRequired actionRequired = ActionRequired.NONE;
     String pseudo;
@@ -73,8 +70,6 @@ public class GameActivity extends AppCompatActivity {
             pseudo = extras.getString("pseudo");
             Log.i("DIM", pseudo);
         }
-
-        //Ajout de l'action sur le bouton pour le jeu
 
         /**
          * Si le bouton es cliqué, vérifie si c'était bel et bien l'action requise
@@ -120,25 +115,25 @@ public class GameActivity extends AppCompatActivity {
                         diffy = y2 - y1;
                         if (diffx < 0 & abs(diffx) > abs(diffy)) {
                             //gauche
-                            verificationDesAction(ActionRequired.SWIPELEFT,v);
+                            verificationDesAction(ActionRequired.SWIPELEFT);
                             relativebutton.setBackgroundColor(Color.parseColor("#995050"));
                             askAndLaunchRandomActions();
                         }
                         if (diffx > 0 & abs(diffx) > abs(diffy)) {
                             //droite
-                            verificationDesAction(ActionRequired.SWIPERIGHT,v);
+                            verificationDesAction(ActionRequired.SWIPERIGHT);
                             relativebutton.setBackgroundColor(Color.parseColor("#509950"));
                             askAndLaunchRandomActions();
                         }
                         if (diffy < 0 & abs(diffy) > abs(diffx)) {
                             //haut
-                            verificationDesAction(ActionRequired.SWIPEUP,v);
+                            verificationDesAction(ActionRequired.SWIPEUP);
                             relativebutton.setBackgroundColor(Color.parseColor("#505090"));
                             askAndLaunchRandomActions();
                         }
                         if (diffy > 0 & abs(diffy) > abs(diffx)) {
                             //bas
-                            verificationDesAction(ActionRequired.SWIPEDOWN,v);
+                            verificationDesAction(ActionRequired.SWIPEDOWN);
                             relativebutton.setBackgroundColor(Color.parseColor("#995099"));
                             askAndLaunchRandomActions();
                         }
@@ -148,94 +143,14 @@ public class GameActivity extends AppCompatActivity {
                 }
                 return false;
             }
-        }));
 
-        //swipelistener = new SwipeListener(relativeLayout);
+        }));
 
         /**
          * Preparation du jeu terminé, lancement de la partie
          */
         startGame();
     }
-
-/*
-    public class SwipeListener implements View.OnTouchListener{
-        GestureDetector gestureDetector;
-        //constructeur
-        SwipeListener(View view){
-            int threshold = 100;
-            int velocity_threshold = 100;
-            GestureDetector.SimpleOnGestureListener listener =
-                    new GestureDetector.SimpleOnGestureListener(){
-                        @Override
-                        public boolean onDown(MotionEvent e) {
-
-                            return true;
-                        }
-                        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY, View v) {
-                            float xDiff = e2.getX() - e1.getX();
-                            float yDiff = e2.getY() - e1.getY();
-                            try{
-                                if(Math.abs(xDiff)>Math.abs(yDiff)){
-                                    if(Math.abs(xDiff)>threshold && Math.abs(velocityX)>velocity_threshold){
-                                        if (xDiff > 0) {
-                                            actionRequiredText.setText("swiped rifht");
-                                            verificationDesAction(ActionRequired.SWIPERIGHT,v);
-                                        }
-                                        if(xDiff < 0) {
-                                            actionRequiredText.setText("swiped left");
-
-                                            verificationDesAction(ActionRequired.SWIPELEFT,v);
-                                        }
-                                    }
-                                    return true;
-                                }
-                                else{
-                                    if(Math.abs(yDiff)>threshold && Math.abs(velocityY)>velocity_threshold){
-                                        if (yDiff > 0) {
-                                            verificationDesAction(ActionRequired.SWIPEDOWN,v);
-                                        }
-                                        //}
-                                        if(yDiff < 0){
-                                            verificationDesAction(ActionRequired.SWIPEUP,v);
-                                        }
-                                    }
-                                    return true;
-                                }
-                            }catch (Exception e){
-                                e.printStackTrace();
-                            }
-                            return false;
-                        }
-                    };
-            gestureDetector = new GestureDetector(listener);
-            view.setOnTouchListener(this);
-        }
-        @Override
-        public boolean onTouch(View view, MotionEvent motionEvent) {
-            return gestureDetector.onTouchEvent((motionEvent));
-        }
-*/
-
-
-  //  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     /**
      * Lancement de la partie, lance le premier timer et la première activité au hasard
@@ -245,51 +160,12 @@ public class GameActivity extends AppCompatActivity {
         CountDownText = findViewById(R.id.countdowm_timer);
         actionRequiredText = findViewById(R.id.AskedAction);
         timerIsRunning = true;
-        startTimer();
         //lancement timer
-        timer=232;
+        CreateNewTimer();
        askAndLaunchRandomActions(); // les actions utilisateur déterminerons si on relance une actiondemandé
     }
 
-    public void pauseMenu(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-    }
 
-    /**
-     * Creation du timer et le lance
-     */
-    public void startTimer() {
-        new CountDownTimer(timeLeftInMilliseconds, 1000) {
-            @Override
-            public void onTick(long i) {
-                timeLeftInMilliseconds = i;
-                updateTimer();
-            }
-            @Override
-            public void onFinish() {
-
-            }
-        }.start();
-    }
-
-    /**
-     * mettre a jour le countdown timer
-     */
-    public void updateTimer(){
-        int minutes = (int) timeLeftInMilliseconds / 60000;
-        int seconds = (int) timeLeftInMilliseconds % 60000/1000;
-
-        String timeLeftInText;
-
-        timeLeftInText = "" + minutes;
-        timeLeftInText = timeLeftInText + ":";
-
-        if (seconds < 10 ) timeLeftInText = timeLeftInText + "0";
-        timeLeftInText = timeLeftInText + seconds;
-
-        CountDownText.setText(timeLeftInText);
-    }
 
     /**
      *selection et lancement de la prochaine action du jeu
@@ -318,11 +194,9 @@ public class GameActivity extends AppCompatActivity {
                 break;
             case 7:
                 AskForSlideAction(ActionRequired.SWIPEDOWN);
-
                 break;
             case 8:
                 AskForSlideAction(ActionRequired.SWIPELEFT);
-
                 break;
             case 9:
                 AskForSlideAction(ActionRequired.SWIPERIGHT);
@@ -332,7 +206,6 @@ public class GameActivity extends AppCompatActivity {
                 // code block
         }
     }
-
     /**
      * Set slide comme action requise
      */
@@ -355,7 +228,6 @@ public class GameActivity extends AppCompatActivity {
                 break;
         }
     }
-
     /**
      * Fonction bouton lorsque la fonction de hasard choisi l'un des boutons est choisi
      * elles remettent le bouton visible et lui met un OnClickListener pour verifier l'action lorsque cliquer
@@ -367,7 +239,7 @@ public class GameActivity extends AppCompatActivity {
 
         bopItButtonCentral.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if (verificationDesAction(ActionRequired.BOPITCENTRE,v) ){
+                if (verificationDesAction(ActionRequired.BOPITCENTRE) ){
                     bopItButtonCentral.setVisibility(View.GONE);
                     askAndLaunchRandomActions();
                 }
@@ -382,7 +254,7 @@ public class GameActivity extends AppCompatActivity {
         bopItButtonHautGauche.setVisibility(View.VISIBLE);
         bopItButtonHautGauche.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if (verificationDesAction(ActionRequired.BOPITHAUTGAUCHE,v) ){
+                if (verificationDesAction(ActionRequired.BOPITHAUTGAUCHE) ){
                     bopItButtonHautGauche.setVisibility(View.GONE);
                     askAndLaunchRandomActions();
                 }
@@ -397,7 +269,7 @@ public class GameActivity extends AppCompatActivity {
 
         bopItButtonHautDroite.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if (verificationDesAction(ActionRequired.BOPITHAUTDROITE,v)){
+                if (verificationDesAction(ActionRequired.BOPITHAUTDROITE)){
                     bopItButtonHautDroite.setVisibility(View.GONE);
                     askAndLaunchRandomActions();
                 }
@@ -412,7 +284,7 @@ public class GameActivity extends AppCompatActivity {
 
         bopItButtonBasGauche.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if (verificationDesAction(ActionRequired.BOPITBASGAUCHE,v) ){
+                if (verificationDesAction(ActionRequired.BOPITBASGAUCHE) ){
                     bopItButtonBasGauche.setVisibility(View.GONE);
                     askAndLaunchRandomActions();
                 }
@@ -428,7 +300,7 @@ public class GameActivity extends AppCompatActivity {
         findViewById(R.id.BopITButtonBasDroite).setVisibility(View.VISIBLE);
         bopItButtonBasdroite.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if (verificationDesAction(ActionRequired.BOPITBASDROITE,v) ){
+                if (verificationDesAction(ActionRequired.BOPITBASDROITE) ){
                     bopItButtonBasdroite.setVisibility(View.GONE);
                     askAndLaunchRandomActions();
                 }
@@ -439,28 +311,72 @@ public class GameActivity extends AppCompatActivity {
     }
     /**
      * Verification si l'action est
-     * @param actionhasard type de l'action réalisé
-     * @param v view
+     * @param actionhasard type de l'action réalis
      * @return true si l'action est la bonne, false si laction realise est mauvaise
      */
-    public boolean verificationDesAction(ActionRequired actionhasard, View v){
+    public boolean verificationDesAction(ActionRequired actionhasard){
         if (actionRequired == actionhasard){
+            mCountDownTimer.cancel();
+            mCountDownTimer.start();
             actionSucceed++;
             return true;
         }
         else{
-            gameOver(v);
+            gameOver();
             return false;
         }
     }
     /**
      * game over, transfert du score à la prochaine activité
-     * @param view
+     *
      */
-    public void gameOver(View view) {
+    public void gameOver() {
         Intent intent = new Intent(this, GameOverActivity.class);
         intent.putExtra("pseudo",pseudo);
-        intent.putExtra("timer",timer);
+        intent.putExtra("timer",actionSucceed);
         startActivity(intent);
+    }
+    /**
+     * Pause menu
+     * @param view pause menu
+     */
+    public void pauseMenu(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    /**
+     * TIMER INIT
+     */
+    public void CreateNewTimer(){
+    mCountDownTimer = new CountDownTimer(timeLeftInMilliseconds, 1000) {
+        @Override
+        public void onTick(long i) {
+            timeLeftInMilliseconds = i;
+            updateTimer();
+        }
+        @Override
+        public void onFinish(){
+
+            gameOver();
+        }
+        }.start();;
+    }
+    /**
+     * mettre a jour le countdown timer
+     */
+    public void updateTimer(){
+        int minutes = (int) timeLeftInMilliseconds / 60000;
+        int seconds = (int) timeLeftInMilliseconds % 60000/1000;
+
+        String timeLeftInText;
+
+        timeLeftInText = "" + minutes;
+        timeLeftInText = timeLeftInText + ":";
+
+        if (seconds < 10 ) timeLeftInText = timeLeftInText + "0";
+        timeLeftInText = timeLeftInText + seconds;
+
+        CountDownText.setText(timeLeftInText);
     }
 }
