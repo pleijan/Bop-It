@@ -1,13 +1,19 @@
 package uqac.dim.bop_it;
 
 import android.app.Notification;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.graphics.Color;
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.hardware.SensorEvent; // besoin pour détecter les changement des sensors
 import android.hardware.SensorEventListener;
@@ -15,9 +21,10 @@ import android.hardware.SensorEventListener;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
-import uqac.dim.bop_it.data.FGyroscope;
 
 public class GameActivity extends AppCompatActivity {
     private TextView CountDownText;
@@ -25,6 +32,7 @@ public class GameActivity extends AppCompatActivity {
     private boolean timerIsRunning ;
     private TextView actionRequiredText;
     private int actionSucceed  = 0;
+
 
     private enum ActionRequired {
         BOPIT,
@@ -54,7 +62,7 @@ public class GameActivity extends AppCompatActivity {
 
         //Ajout de l'action sur le bouton pour le jeu
 
-        /*final Button button = (Button) findViewById(R.id.BopITButton);
+        final Button button = (Button) findViewById(R.id.BopITButton);
         button.setOnClickListener(new View.OnClickListener() {
                                       public void onClick(View v) {
                                           if (actionRequired == ActionRequired.BOPIT ){
@@ -68,8 +76,16 @@ public class GameActivity extends AppCompatActivity {
                                   });
 
 
-        startGame(); */
+        startGame();
+
     }
+
+    //lancement fenètre activité
+    public void Activite(View view) {
+        Intent intent = new Intent(this, ActivityGyro.class);
+        startActivity(intent);
+    }
+
 
     private void startGame() {
         CountDownText = findViewById(R.id.countdowm_timer);
@@ -77,90 +93,90 @@ public class GameActivity extends AppCompatActivity {
         timerIsRunning = true;
         startTimer();
 
-       askAndLaunchRandomActions(); // les actions utilisateur déterminerons si on relance une actiondemandé
+        askAndLaunchRandomActions(); // les actions utilisateur déterminerons si on relance une actiondemandé
     }
 
-    public void gameOver(View view) {
-        Intent intent = new Intent(this, GameOverActivity.class);
-        intent.putExtra("pseudo",pseudo);
-        intent.putExtra("timer",timer);
-        startActivity(intent);
-    }
+        public void gameOver(View view) {
+            Intent intent = new Intent(this, GameOverActivity.class);
+            intent.putExtra("pseudo",pseudo);
+            intent.putExtra("timer",timer);
+            startActivity(intent);
+        }
 
-    public void pauseMenu(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-    }
+        public void pauseMenu(View view) {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        }
 
-    public void startTimer() {
-        new CountDownTimer(timeLeftInMilliseconds, 1000) {
-            @Override
-            public void onTick(long i) {
-                timeLeftInMilliseconds = i;
-                updateTimer();
-            }
-            @Override
-            public void onFinish() {
+        public void startTimer() {
+            new CountDownTimer(timeLeftInMilliseconds, 1000) {
+                @Override
+                public void onTick(long i) {
+                    timeLeftInMilliseconds = i;
+                    updateTimer();
+                }
+                @Override
+                public void onFinish() {
 
-            }
-        }.start();
-    }
-    public void updateTimer(){
-        int minutes = (int) timeLeftInMilliseconds / 60000;
-        int seconds = (int) timeLeftInMilliseconds % 60000/1000;
+                }
+            }.start();
+        }
+        public void updateTimer(){
+            int minutes = (int) timeLeftInMilliseconds / 60000;
+            int seconds = (int) timeLeftInMilliseconds % 60000/1000;
 
-        String timeLeftInText;
+            String timeLeftInText;
 
-        timeLeftInText = "" + minutes;
-        timeLeftInText = timeLeftInText + ":";
+            timeLeftInText = "" + minutes;
+            timeLeftInText = timeLeftInText + ":";
 
-        if (seconds < 10 ) timeLeftInText = timeLeftInText + "0";
-        timeLeftInText = timeLeftInText + seconds;
+            if (seconds < 10 ) timeLeftInText = timeLeftInText + "0";
+            timeLeftInText = timeLeftInText + seconds;
 
-        CountDownText.setText(timeLeftInText);
-    }
+            CountDownText.setText(timeLeftInText);
+        }
 
-    public void askAndLaunchRandomActions(){
-        final int random = new Random().nextInt(2) + 1; // from 1 to 1 (random 1 = 0)
-       //selon le random généré, choisi une fonction
-        switch(random) {
-            case 1:
-                bopItAction();//demande de pousser le bouton
-                break;
-            case 2:
-                bopItActionMaisPourTest();
-                break;
-            case 3:
-                break;
-            case 4:
-                break;
-            case 5:
-                break;
-            case 6:
-                break;
-            default: // bop-it
-                break;
+        public void askAndLaunchRandomActions(){
+            final int random = new Random().nextInt(2) + 1; // from 1 to 1 (random 1 = 0)
+            //selon le random généré, choisi une fonction
+            switch(random) {
+                case 1:
+                    bopItAction();//demande de pousser le bouton
+                    break;
+                case 2:
+                    bopItActionMaisPourTest();
+                    break;
+                case 3:
+                    //Activite();
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    break;
+                case 6:
+                    break;
+                default: // bop-it
+                    break;
                 // code block
 
 
+            }
         }
+
+        public void bopItAction(){
+            actionRequiredText.setText("Bop-IT!");
+            actionRequired = ActionRequired.BOPIT; //TODO mis a none a des din de test, doit etre remis a BOPIT apres, note au cas
+        }
+        public void bopItActionMaisPourTest(){
+            actionRequiredText.setText("Fait rien");
+            actionRequired = ActionRequired.NONE; //TODO mis a none a des din de test, doit etre remis a BOPIT apres, note au cas
+        }
+
+
+
+
     }
 
-    public void bopItAction(){
-        actionRequiredText.setText("Bop-IT!");
-        actionRequired = ActionRequired.BOPIT; //TODO mis a none a des din de test, doit etre remis a BOPIT apres, note au cas
-    }
-    public void bopItActionMaisPourTest(){
-        actionRequiredText.setText("Fait rien");
-        actionRequired = ActionRequired.NONE; //TODO mis a none a des din de test, doit etre remis a BOPIT apres, note au cas
-    }
-    public void LoadGyroscope(View view) {
 
-        FGyroscope Fragment1 = new FGyroscope();
 
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.FragmentG, FGyroscope.class,null)
-                .commit();
-    }
 
-}

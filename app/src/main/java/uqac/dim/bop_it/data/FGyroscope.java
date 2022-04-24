@@ -1,4 +1,4 @@
-package uqac.dim.bop_it.data;
+/*package uqac.dim.bop_it.data;
 
 import android.content.Context;
 import android.content.pm.ActivityInfo;
@@ -67,9 +67,9 @@ public class FGyroscope extends Fragment {
             textZ.setText("Z : " + (int) z + " rad/s");
             Log.d("DIM", "##########################"+String.valueOf(x)+String.valueOf(y)+String.valueOf(z));
         }
-    };**/
+    };
 
-    @Override
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -78,3 +78,4 @@ public class FGyroscope extends Fragment {
 }
 
 
+*/
