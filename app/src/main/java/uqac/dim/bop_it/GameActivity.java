@@ -8,11 +8,27 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.hardware.SensorEvent; // besoin pour détecter les changement des sensors
-import android.hardware.SensorEventListener;
+import androidx.appcompat.app.AppCompatActivity;
+import java.util.Random;
+import android.view.GestureDetector;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Bundle;
+import android.view.GestureDetector;
+import android.view.Gravity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Random;
@@ -20,11 +36,16 @@ import java.util.Random;
 import butterknife.internal.ListenerClass;
 
 public class GameActivity extends AppCompatActivity {
+    RelativeLayout relativeLayout;
+    SwipeListener swipelistener;
+
+
     private TextView CountDownText;
     private long timeLeftInMilliseconds = 300000; // Time in milliseconds
     private boolean timerIsRunning ;
-    private TextView actionRequiredText;
+    public TextView actionRequiredText;
     private int actionSucceed  = 0; // UTILISER POUR LE POINTAGE FINAL
+
 
     /**
      * type de lactivite lancee
@@ -36,6 +57,10 @@ public class GameActivity extends AppCompatActivity {
         BOPITHAUTGAUCHE,
         BOPITBASGAUCHE,
         BOPITBASDROITE,
+        SWIPELEFT,
+        SWIPEUP,
+        SWIPERIGHT,
+        SWIPEDOWN,
         NONE
     }
 
@@ -84,11 +109,91 @@ public class GameActivity extends AppCompatActivity {
         bopItButtonBasGauche.setVisibility(View.GONE);
         bopItButtonBasDroite.setVisibility(View.GONE);
 
+        relativeLayout = findViewById(R.id.relativelayout);
+        swipelistener = new SwipeListener(relativeLayout);
+
         /**
          * Preparation du jeu terminé, lancement de la partie
          */
         startGame();
     }
+
+    public class SwipeListener implements View.OnTouchListener{
+        GestureDetector gestureDetector;
+        //constructeur
+        SwipeListener(View view){
+            int threshold = 100;
+            int velocity_threshold = 100;
+            GestureDetector.SimpleOnGestureListener listener =
+                    new GestureDetector.SimpleOnGestureListener(){
+                        @Override
+                        public boolean onDown(MotionEvent e) {
+
+                            return true;
+                        }
+                        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY, View v) {
+                            float xDiff = e2.getX() - e1.getX();
+                            float yDiff = e2.getY() - e1.getY();
+                            try{
+                                if(Math.abs(xDiff)>Math.abs(yDiff)){
+                                    if(Math.abs(xDiff)>threshold && Math.abs(velocityX)>velocity_threshold){
+                                        if (xDiff > 0) {
+                                            actionRequiredText.setText("swiped rifht");
+                                            verificationDesAction(ActionRequired.SWIPERIGHT,v);
+                                        }
+                                        if(xDiff < 0) {
+                                            actionRequiredText.setText("swiped left");
+
+                                            verificationDesAction(ActionRequired.SWIPELEFT,v);
+                                        }
+                                    }
+                                    return true;
+                                }
+                                else{
+                                    if(Math.abs(yDiff)>threshold && Math.abs(velocityY)>velocity_threshold){
+                                        if (yDiff > 0) {
+                                            verificationDesAction(ActionRequired.SWIPEDOWN,v);
+                                        }
+                                        //}
+                                        if(yDiff < 0){
+                                            verificationDesAction(ActionRequired.SWIPEUP,v);
+                                        }
+                                    }
+                                    return true;
+                                }
+                            }catch (Exception e){
+                                e.printStackTrace();
+                            }
+                            return false;
+                        }
+                    };
+            gestureDetector = new GestureDetector(listener);
+            view.setOnTouchListener(this);
+        }
+        @Override
+        public boolean onTouch(View view, MotionEvent motionEvent) {
+            return gestureDetector.onTouchEvent((motionEvent));
+        }
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     /**
      * Lancement de la partie, lance le premier timer et la première activité au hasard
@@ -168,6 +273,12 @@ public class GameActivity extends AppCompatActivity {
                 break;
             case 6:
                 break;
+            case 7:
+                break;
+            case 8:
+                break;
+            case 9:
+                break;
             default: // bop-it
                 break;
                 // code block
@@ -180,7 +291,6 @@ public class GameActivity extends AppCompatActivity {
      * Fonction bouton lorsque la fonction de hasard choisi l'un des boutons est choisi
      * elles remettent le bouton visible et lui met un OnClickListener pour verifier l'action lorsque cliquer
      */
-
     public void bopItActionCENTRE(){
         actionRequiredText.setText("Bop-IT!");
         Button bopItButtonCentral = (Button)findViewById(R.id.bopITButtonCentral); //todo trouver bouton
