@@ -1,6 +1,8 @@
 package uqac.dim.bop_it;
 
-import android.app.Notification;
+import static java.lang.Math.abs;
+
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -8,36 +10,19 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.Random;
-import android.view.GestureDetector;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.os.Bundle;
-import android.view.GestureDetector;
-import android.view.Gravity;
 import android.view.MotionEvent;
-import android.view.View;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import androidx.appcompat.app.AppCompatActivity;
-
-import java.util.Random;
-
-import butterknife.internal.ListenerClass;
 
 public class GameActivity extends AppCompatActivity {
     RelativeLayout relativeLayout;
-    SwipeListener swipelistener;
+
+    float x1, x2, y1, y2, diffx, diffy;
+    //SwipeListener swipelistener;
 
 
     private TextView CountDownText;
@@ -71,6 +56,7 @@ public class GameActivity extends AppCompatActivity {
      * à la création de l'activite
      * @param savedInstanceState
      */
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -109,8 +95,47 @@ public class GameActivity extends AppCompatActivity {
         bopItButtonBasGauche.setVisibility(View.GONE);
         bopItButtonBasDroite.setVisibility(View.GONE);
 
-        relativeLayout = findViewById(R.id.relativelayout);
-        swipelistener = new SwipeListener(relativeLayout);
+        /**
+         * creation interface tactile
+         */
+
+        ImageButton relativebutton = (ImageButton) findViewById(R.id.relativebutton);
+        relativebutton.setOnTouchListener((new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                switch (motionEvent.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        x1 = motionEvent.getX();// Do what you want
+                        y1 = motionEvent.getY();
+                        break;
+
+                    case MotionEvent.ACTION_UP:
+                        x2 = motionEvent.getX();
+                        y2 = motionEvent.getY();
+
+                        diffx = x2 - x1;
+                        diffy = y2 - y1;
+                        if (diffx < 0 & abs(diffx) > abs(diffy)) {
+                            actionRequiredText.setText("gauche");
+                        }
+                        if (diffx > 0 & abs(diffx) > abs(diffy)) {
+                            actionRequiredText.setText("droite");
+                        }
+                        if (diffy < 0 & abs(diffy) > abs(diffx)) {
+                            actionRequiredText.setText("haut");
+                        }
+                        if (diffy > 0 & abs(diffy) > abs(diffx)) {
+                            actionRequiredText.setText("bas");
+                        }
+                        break;
+                    default:
+                        break;
+                }
+                return false;
+            }
+        }));
+
+        //swipelistener = new SwipeListener(relativeLayout);
 
         /**
          * Preparation du jeu terminé, lancement de la partie
@@ -118,6 +143,7 @@ public class GameActivity extends AppCompatActivity {
         startGame();
     }
 
+/*
     public class SwipeListener implements View.OnTouchListener{
         GestureDetector gestureDetector;
         //constructeur
@@ -174,9 +200,10 @@ public class GameActivity extends AppCompatActivity {
         public boolean onTouch(View view, MotionEvent motionEvent) {
             return gestureDetector.onTouchEvent((motionEvent));
         }
+*/
 
 
-    }
+  //  }
 
 
 
