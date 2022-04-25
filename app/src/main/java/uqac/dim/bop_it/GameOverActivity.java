@@ -64,11 +64,14 @@ public class GameOverActivity extends AppCompatActivity {
             scoreView.setText(String.valueOf(score.getNbEpreuve()));
             pseudoView.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);
             pseudoView.setWidth(200);
+            pseudoView.setTextColor(getColor(R.color.white));
 
             scoreView.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_END);
+            scoreView.setTextColor(getColor(R.color.white));
 
             grille.addView(pseudoView);
             grille.addView(scoreView);
+
 
         }
     }

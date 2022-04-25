@@ -49,9 +49,13 @@ public class LeaderboardActivity extends AppCompatActivity {
             Score score = it.next();
 
             pseudoView.setText(score.getPseudo());
+            pseudoView.setTextColor(getColor(R.color.white));
             scoreView.setText(String.valueOf(score.getNbEpreuve()));
+            scoreView.setTextColor(getColor(R.color.white));
             pseudoView.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);
+            pseudoView.setTextColor(getColor(R.color.white));
             scoreView.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_END);
+            scoreView.setTextColor(getColor(R.color.white));
             grille.addView(pseudoView);
             grille.addView(scoreView);
 
