@@ -24,7 +24,6 @@ public class GameActivity extends AppCompatActivity {
     RelativeLayout relativeLayout;
     CountDownTimer mCountDownTimer;
     float x1, x2, y1, y2, diffx, diffy;
-
     private TextView CountDownText;
     private long timeLeftInMilliseconds = 3000; // Time in milliseconds
     private boolean timerIsRunning ;
@@ -331,6 +330,7 @@ public class GameActivity extends AppCompatActivity {
      *
      */
     public void gameOver() {
+        mCountDownTimer.cancel();
         Intent intent = new Intent(this, GameOverActivity.class);
         intent.putExtra("pseudo",pseudo);
         intent.putExtra("timer",actionSucceed);
@@ -341,6 +341,8 @@ public class GameActivity extends AppCompatActivity {
      * @param view pause menu
      */
     public void pauseMenu(View view) {
+        mCountDownTimer.cancel();
+
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
@@ -357,7 +359,6 @@ public class GameActivity extends AppCompatActivity {
         }
         @Override
         public void onFinish(){
-
             gameOver();
         }
         }.start();;
