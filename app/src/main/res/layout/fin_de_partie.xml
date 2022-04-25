@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:screenOrientation="portrait">
+    android:screenOrientation="portrait"
+    android:background="@drawable/imagedegueuxback"
+    >
 
     <ImageButton
         android:id="@+id/BackMenu"
@@ -27,6 +29,7 @@
         android:text="@string/felicitation_ton_score_est_de"
         android:textAlignment="center"
         android:textSize="34sp"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,6 +37,8 @@
         app:layout_constraintVertical_bias="0.083" />
 
     <TextView
+        android:textColor="@color/white"
+
         android:id="@+id/placeClassement"
         android:layout_width="271dp"
         android:layout_height="62dp"
@@ -74,6 +79,7 @@
         app:layout_constraintVertical_bias="0.925" />
 
     <ScrollView
+        android:textColor="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="200dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -92,21 +98,30 @@
                 android:id="@+id/grille_score"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:columnCount="2">
+                android:columnCount="2"
+                >
 
                 <TextView
-                    android:text="Pseudo"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:text="nb Defi"/>
-
-                <TextView
-                    android:text="Dev"/>
+                    android:text="@string/pseudo"
+                    android:textColor="@color/white"
+                    />
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:text="29430"/>
+                    android:text="@string/nb_defi"
+                    android:textColor="@color/white"
+                    />
+
+                <TextView
+                    android:text="@string/dev"
+                    android:textColor="@color/white"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="@string/_29430"
+                    android:textColor="@color/white"
+                    />
 
             </GridLayout>
         </LinearLayout>

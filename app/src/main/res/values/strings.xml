@@ -9,4 +9,10 @@
     <string name="slideleft">Slide left!</string>
     <string name="slideright">Slide right!</string>
     <string name="bopt">Bop-IT!</string>
+    <string name="bop_it">Bop-it</string>
+    <string name="welcome_to_bop_it">Welcome to bop it</string>
+    <string name="pseudo">Pseudo</string>
+    <string name="nb_defi">nb Defi</string>
+    <string name="dev">Dev</string>
+    <string name="_29430">29430</string>
 </resources>

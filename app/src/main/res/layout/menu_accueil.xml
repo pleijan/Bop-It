@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F1F0F0"
     android:screenOrientation="portrait"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@drawable/imagedegueuxback"
+    >
 
     <ImageButton
         android:id="@+id/Play"
@@ -22,14 +23,14 @@
 
     <ImageView
         android:id="@+id/logoJeu"
-        android:layout_width="237dp"
-        android:layout_height="216dp"
+        android:layout_width="265dp"
+        android:layout_height="253dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.103"
-        app:srcCompat="@drawable/logo" />
+        app:srcCompat="@drawable/bopitlogo" />
 
     <ImageButton
         android:id="@+id/buttonLearderboard"
@@ -45,12 +46,14 @@
         app:layout_constraintVertical_bias="0.89" />
 
     <TextView
+        android:fontFamily="sans-serif-black"
         android:id="@+id/Welcome"
+        android:textColor="@color/white"
         android:layout_width="254dp"
         android:layout_height="52dp"
-        android:text="Welcome to bop it"
+        android:text="@string/welcome_to_bop_it"
         android:textAlignment="center"
-        android:textSize="24sp"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
@@ -59,10 +62,11 @@
         app:layout_constraintVertical_bias="0.499" />
 
     <EditText
+        android:textColor="@color/white"
         android:id="@+id/pseudo"
         android:layout_width="243dp"
         android:layout_height="47dp"
-        android:text="Pseudo"
+        android:text="@string/pseudo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

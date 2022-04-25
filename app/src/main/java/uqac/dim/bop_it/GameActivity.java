@@ -116,25 +116,25 @@ public class GameActivity extends AppCompatActivity {
                         if (diffx < 0 & abs(diffx) > abs(diffy)) {
                             //gauche
                             verificationDesAction(ActionRequired.SWIPELEFT);
-                            relativebutton.setBackgroundColor(Color.parseColor("#995050"));
+                            relativebutton.setBackgroundColor(getColor(R.color.swipeleft));
                             askAndLaunchRandomActions();
                         }
                         if (diffx > 0 & abs(diffx) > abs(diffy)) {
                             //droite
                             verificationDesAction(ActionRequired.SWIPERIGHT);
-                            relativebutton.setBackgroundColor(Color.parseColor("#509950"));
+                            relativebutton.setBackgroundColor(getColor(R.color.swiperight));
                             askAndLaunchRandomActions();
                         }
                         if (diffy < 0 & abs(diffy) > abs(diffx)) {
                             //haut
                             verificationDesAction(ActionRequired.SWIPEUP);
-                            relativebutton.setBackgroundColor(Color.parseColor("#505090"));
+                            relativebutton.setBackgroundColor(getColor(R.color.swipeup));
                             askAndLaunchRandomActions();
                         }
                         if (diffy > 0 & abs(diffy) > abs(diffx)) {
                             //bas
                             verificationDesAction(ActionRequired.SWIPEDOWN);
-                            relativebutton.setBackgroundColor(Color.parseColor("#995099"));
+                            relativebutton.setBackgroundColor(getColor(R.color.swipedown));
                             askAndLaunchRandomActions();
                         }
                         break;
