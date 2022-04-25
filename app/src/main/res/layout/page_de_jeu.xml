@@ -9,6 +9,8 @@
 
     <TextView
         android:id="@+id/countdowm_timer"
+        android:textColor="@color/white"
+        android:fontFamily="sans-serif-black"
         android:layout_width="113dp"
         android:layout_height="35dp"
         android:background="@drawable/bordure"
@@ -28,7 +30,9 @@
         android:background="@drawable/bordure"
         android:text="Bop-It!"
         android:textAlignment="center"
-        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:fontFamily="sans-serif-black"
+        android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/imageView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.487"
